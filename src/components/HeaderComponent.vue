@@ -11,23 +11,20 @@ defineProps({
 })
 
 const menuAbierto = ref(false)
-const artistasAbierto = ref(false)
 const ayudaAbierta = ref(false)
 
-const cerrarMenu = () => {
-  menuAbierto.value = false
-  artistasAbierto.value = false
-}
-
 const irSeccion = (id) => {
-  cerrarMenu()
+  menuAbierto.value = false
 
   const seccion = document.getElementById(id)
 
   if (seccion) {
-    seccion.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
+    const navbar = document.querySelector('.navbar')
+    const altura = navbar?.offsetHeight || 0
+
+    window.scrollTo({
+      top: seccion.getBoundingClientRect().top + window.scrollY - altura - 12,
+      behavior: 'smooth'
     })
   }
 }
@@ -37,7 +34,8 @@ const irArtista = (id) => {
 }
 
 const irInicio = () => {
-  cerrarMenu()
+  menuAbierto.value = false
+
   window.scrollTo({
     top: 0,
     behavior: 'smooth'
@@ -49,7 +47,7 @@ const irSorpresa = () => {
 }
 
 const abrirAyuda = () => {
-  cerrarMenu()
+  menuAbierto.value = false
   ayudaAbierta.value = true
 }
 </script>
@@ -57,32 +55,34 @@ const abrirAyuda = () => {
 <template>
   <header class="header" id="inicio">
     <nav class="navbar">
+
       <button class="logo" @click="irInicio">
         BRISA.FM ♡
       </button>
 
       <button
         class="menu-toggle"
-        @click="menuAbierto = !menuAbierto"
         :aria-expanded="menuAbierto"
-        aria-label="Abrir menú"
+        aria-controls="menu-principal"
+        aria-label="Abrir o cerrar menú"
+        @click="menuAbierto = !menuAbierto"
       >
         {{ menuAbierto ? '✕' : '☰' }}
       </button>
 
-      <div class="nav-links" :class="{ abierto: menuAbierto }">
+      <div
+        id="menu-principal"
+        class="nav-links"
+        :class="{ abierto: menuAbierto }"
+      >
         <button @click="irInicio">Inicio</button>
 
         <div class="dropdown-artistas">
-          <button
-            class="dropdown-boton"
-            @click="artistasAbierto = !artistasAbierto"
-          >
-            Artistas
-            <span>{{ artistasAbierto ? '⌃' : '⌄' }}</span>
+          <button class="dropdown-boton" type="button">
+            Mis fav ♡
           </button>
 
-          <div v-if="artistasAbierto" class="dropdown-menu">
+          <div class="dropdown-menu">
             <button
               v-for="artist in artists"
               :key="artist.id"
@@ -93,7 +93,6 @@ const abrirAyuda = () => {
           </div>
         </div>
 
-        <button @click="irSeccion('musica')">Música</button>
         <button @click="irSeccion('eventos')">Eventos</button>
         <button @click="irSeccion('tienda')">Tienda</button>
         <button @click="abrirAyuda">Ayuda</button>
@@ -102,13 +101,17 @@ const abrirAyuda = () => {
           ♡ Mi cuenta
         </button>
 
-        <button
-          class="mystery-link"
-          @click="irSorpresa"
-          title="Pista sorpresa"
-        >
-          ?
-        </button>
+            <button
+      class="mystery-link"
+      @click="irSorpresa"
+      title="Pista sorpresa"
+    >
+      <img
+        src="/images/logo-sorpresa_sinfondo.png"
+        alt="Caja sorpresa musical"
+        class="surprise-icon"
+      />
+    </button>
       </div>
     </nav>
 
@@ -117,7 +120,9 @@ const abrirAyuda = () => {
         BRISA.FM · EDICIÓN 01 · SEPTIEMBRE 2026
       </p>
 
-      <p class="issue">LA EDICIÓN MUSICAL</p>
+      <p class="issue">
+        LA EDICIÓN MUSICAL
+      </p>
 
       <h1>
         Esto merece
@@ -157,7 +162,9 @@ const abrirAyuda = () => {
 }
 
 .navbar {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
   z-index: 1000;
   width: 100%;
   padding: 18px 4%;
@@ -166,14 +173,14 @@ const abrirAyuda = () => {
   align-items: center;
   gap: 20px;
   box-sizing: border-box;
-  background: rgba(255, 249, 251, 0.9);
+  background: rgba(255, 249, 251, 0.95);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(80, 40, 55, 0.15);
 }
 
 .logo {
   border: none;
-  background: none;
+  background: transparent;
   font-family: Georgia, serif;
   font-size: 21px;
   font-style: italic;
@@ -186,13 +193,12 @@ const abrirAyuda = () => {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  flex-wrap: wrap;
   gap: 20px;
 }
 
 .nav-links button {
   border: none;
-  background: none;
+  background: transparent;
   padding: 6px 0;
   font-size: 11px;
   letter-spacing: 1.3px;
@@ -204,47 +210,37 @@ const abrirAyuda = () => {
 
 .nav-links button:hover {
   color: #bd4d77;
-  transform: translateY(-2px);
 }
 
 .dropdown-artistas {
   position: relative;
 }
 
-.nav-links .dropdown-boton {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.dropdown-boton span {
-  font-size: 15px;
-  color: #a64066;
-}
-
 .dropdown-menu {
+  display: none;
   position: absolute;
-  top: calc(100% + 12px);
+  top: 100%;
   left: 0;
   min-width: 190px;
   padding: 10px;
-  display: flex;
   flex-direction: column;
   gap: 5px;
   background: #fff9fb;
   border: 1px solid #f3c3d4;
-  border-radius: 16px;
+  border-radius: 12px;
   box-shadow: 0 8px 25px rgba(166, 64, 102, 0.15);
   z-index: 1100;
+}
+
+.dropdown-artistas:hover .dropdown-menu,
+.dropdown-artistas:focus-within .dropdown-menu {
+  display: flex;
 }
 
 .nav-links .dropdown-menu button {
   width: 100%;
   padding: 12px 15px;
-  border: none;
-  border-radius: 10px;
-  background: transparent;
-  color: #4b303a;
+  border-radius: 8px;
   text-align: left;
   white-space: nowrap;
 }
@@ -291,8 +287,8 @@ const abrirAyuda = () => {
 }
 
 .hero-content {
-  min-height: calc(100vh - 70px);
-  padding: 80px 8% 70px;
+  min-height: 100vh;
+  padding: 115px 8% 70px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -376,7 +372,6 @@ h1 span {
 
 @media (max-width: 1100px) {
   .navbar {
-    flex-wrap: wrap;
     padding: 16px 6%;
   }
 
@@ -387,11 +382,20 @@ h1 span {
 
   .nav-links {
     display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 75vh;
+    overflow-y: auto;
+    box-sizing: border-box;
     flex-direction: column;
     align-items: stretch;
-    width: 100%;
     gap: 12px;
-    padding: 15px 0;
+    padding: 15px 6%;
+    background: #fff9fb;
+    border-bottom: 1px solid #f3c3d4;
+    box-shadow: 0 10px 25px rgba(80, 40, 55, 0.12);
   }
 
   .nav-links.abierto {
@@ -410,7 +414,6 @@ h1 span {
 
   .nav-links .dropdown-boton {
     width: 100%;
-    justify-content: center;
   }
 
   .dropdown-menu {
@@ -418,7 +421,7 @@ h1 span {
     width: 100%;
     min-width: 0;
     box-sizing: border-box;
-    margin-top: 10px;
+    margin-top: 5px;
     box-shadow: none;
   }
 
@@ -431,7 +434,7 @@ h1 span {
   }
 
   .hero-content {
-    padding: 60px 7%;
+    padding: 100px 7% 60px;
   }
 
   h1 {
@@ -446,7 +449,7 @@ h1 span {
   }
 
   .hero-content {
-    padding: 50px 6%;
+    padding: 100px 6% 55px;
   }
 
   h1 {
@@ -468,4 +471,12 @@ h1 span {
     letter-spacing: 3px;
   }
 }
+
+.surprise-icon {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  display: block;
+}
+
 </style>

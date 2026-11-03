@@ -3,6 +3,7 @@ import FooterComponent from './components/FooterComponent.vue';
 import HeaderComponent from './components/HeaderComponent.vue';
 import MainComponent from './components/MainComponent.vue';
 import SurpriseTrack from './components/SurpriseTrack.vue';
+import EventsComponent from './components/EventsComponent.vue';
 
 const artists =[
   {
@@ -167,6 +168,7 @@ const artists =[
     <HeaderComponent :artists="artists"></HeaderComponent>
    <MainComponent :artists="artists"></MainComponent> 
    <SurpriseTrack></SurpriseTrack>
+   <EventsComponent></EventsComponent>
     <FooterComponent></FooterComponent>
 
 </div>
