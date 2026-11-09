@@ -1,98 +1,38 @@
-
 <script setup>
-const events = [
-  {
-    date: '04',
-    month: 'DICIEMBRE',
-    title: 'Kali Uchis',
-    type: 'CONCIERTO',
-    description: 'Una noche para disfrutar de su música.'
-  },
-  {
-    date: '15',
-    month: 'ENERO',
-    title: 'Próximamente',
-    type: 'POR ANUNCIAR',
-    description: 'Nuevos eventos musicales próximamente.'
-  },
-  {
-    date: '28',
-    month: 'FEBRERO',
-    title: 'Próximamente',
-    type: 'POR ANUNCIAR',
-    description: 'Mantente al tanto de las novedades.'
+defineProps({
+  events: {
+    type: Array,
+    required: true
   }
-]
+})
 </script>
 
 <template>
-  <section id="eventos" class="events-section">
-    <div class="events-header">
-      <p>BRISA.FM / AGENDA MUSICAL</p>
-      <h2>Próximos eventos<span> ♡</span></h2>
-      <p class="events-subtitle">
-        Música, experiencias y momentos por descubrir.
-      </p>
-    </div>
+  <div class="events-grid">
+    <article
+      v-for="(event, index) in events"
+      :key="event.id"
+      class="event-card"
+    >
+      <div class="event-date">
+        <span>{{ event.date }}</span>
+        <small>{{ event.month }}</small>
+      </div>
 
-    <div class="events-grid">
-      <article
-        v-for="(event, index) in events"
-        :key="index"
-        class="event-card"
-      >
-        <div class="event-date">
-          <span>{{ event.date }}</span>
-          <small>{{ event.month }}</small>
-        </div>
+      <div class="event-info">
+        <p>{{ event.type }}</p>
+        <h3>{{ event.title }}</h3>
+        <span>{{ event.description }}</span>
+      </div>
 
-        <div class="event-info">
-          <p>{{ event.type }}</p>
-          <h3>{{ event.title }}</h3>
-          <span>{{ event.description }}</span>
-        </div>
-
-        <span class="event-number">0{{ index + 1 }}</span>
-      </article>
-    </div>
-  </section>
+      <span class="event-number">
+        {{ String(index + 1).padStart(2, '0') }}
+      </span>
+    </article>
+  </div>
 </template>
 
 <style scoped>
-.events-section {
-  padding: 90px 8%;
-  background: #fff9fb;
-  color: #382b32;
-}
-
-.events-header {
-  max-width: 1250px;
-  margin: 0 auto 55px;
-}
-
-.events-header > p:first-child {
-  font-size: 10px;
-  letter-spacing: 4px;
-  font-weight: bold;
-}
-
-.events-header h2 {
-  margin: 18px 0;
-  font-family: Georgia, serif;
-  font-size: clamp(40px, 6vw, 75px);
-  font-weight: normal;
-}
-
-.events-header h2 span {
-  color: #e79bb9;
-}
-
-.events-subtitle {
-  color: #8d7882;
-  font-family: Georgia, serif;
-  font-style: italic;
-}
-
 .events-grid {
   max-width: 1250px;
   margin: auto;
@@ -168,12 +108,8 @@ const events = [
 }
 
 @media (max-width: 600px) {
-  .events-section {
-    padding: 65px 6%;
-  }
-
   .events-grid {
     grid-template-columns: 1fr;
   }
 }
-</style>
+</style> 

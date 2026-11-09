@@ -1,0 +1,73 @@
+export const events = [
+  {
+    id: 1,
+    artistId: 1,
+    artistName: 'Kali Uchis',
+    title: 'Concierto de Kali Uchis',
+    category: 'Concierto',
+    type: 'CONCIERTO',
+    date: '04',
+    month: 'DICIEMBRE',
+    start: '2026-12-04',
+    importance: 'alta',
+    location: 'Foro GNP Seguros, Mérida',
+    description: 'Kali Uchis llega a Mérida.'
+  },
+ {
+  id: 2,
+  artistId: 2,
+  artistName: 'A$AP Rocky',
+  title: 'A$AP Rocky llega a Fortnite',
+  category: 'Gaming / Colaboración',
+  type: 'GAMING',
+  date: '05',
+  month: 'NOVIEMBRE',
+  start: '2026-11-05',
+  end: '2026-12-07',
+  importance: 'alta',
+  location: 'Fortnite / Tienda de objetos',
+  description: 'Nueva colección de atuendos y cosméticos de A$AP Rocky. Disponible hasta el 6 de diciembre.'
+},
+  {
+    id: 3,
+    artistId: 2,
+    artistName: 'A$AP Rocky',
+    title: "DON'T BE DUMB: DISC 2",
+    category: 'Lanzamiento musical',
+    type: 'MÚSICA / LANZAMIENTO',
+    date: '—',
+    month: 'PRÓXIMAMENTE',
+    start: null,
+    importance: 'media',
+    location: 'Plataformas musicales',
+    description: 'Rocky prepara la segunda parte de su proyecto.'
+  },
+  {
+    id: 4,
+    artistId: 3,
+    artistName: 'Ye',
+    title: 'Concierto de Ye en CDMX',
+    category: 'Concierto',
+    type: 'CONCIERTO',
+    date: '19',
+    month: 'MARZO 2027',
+    start: '2027-03-19',
+    importance: 'alta',
+    location: 'Estadio Banorte, CDMX',
+    description: 'Presentación de Ye en Ciudad de México.'
+  },
+  {
+    id: 5,
+    artistId: 4,
+    artistName: 'NSQK',
+    title: 'NSQK en Mérida',
+    category: 'Concierto',
+    type: 'CONCIERTO',
+    date: '11',
+    month: 'MARZO 2027',
+    start: '2027-03-11',
+    importance: 'alta',
+    location: 'Foro GNP Seguros, Mérida',
+    description: 'NSQK llega a Mérida con su gira.'
+  }
+]
