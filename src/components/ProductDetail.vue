@@ -64,18 +64,24 @@ function selectVariant(variant) {
 
         <p>{{ product.description }}</p>
 
-        <h4>Color</h4>
+       <h4>Color</h4>
 
-        <div class="variant-options">
-          <button
-            v-for="variant in product.variants"
-            :key="variant.id"
-            :class="{ selected: selectedVariant.id === variant.id }"
-            @click="selectVariant(variant)"
-          >
-            {{ variant.name }}
-          </button>
-        </div>
+          <div class="variant-options">
+            <button
+              v-for="variant in product.variants"
+              :key="variant.id"
+              class="variant-option"
+              :class="{ selected: selectedVariant.id === variant.id }"
+              @click="selectVariant(variant)"
+            >
+              <span
+                class="color-circle"
+                :style="{ backgroundColor: variant.color || '#d9b3c9' }"
+              ></span>
+
+              <span class="color-name">{{ variant.name }}</span>
+            </button>
+          </div>
 
         <h4>Materiales</h4>
         <p>{{ product.materials }}</p>
@@ -170,20 +176,37 @@ function selectVariant(variant) {
 
 .variant-options {
   display: flex;
-  gap: 10px;
+  gap: 18px;
+  flex-wrap: wrap;
 }
 
-.variant-options button {
-  padding: 9px 15px;
-  border: 1px solid #d9b3c9;
-  border-radius: 20px;
-  background: white;
+.variant-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  border: none;
+  background: transparent;
   cursor: pointer;
+  padding: 5px;
 }
 
-.variant-options button.selected {
-  background: #d9b3c9;
-  color: white;
+.color-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #e5d6df;
+  transition: 0.2s;
+}
+
+.variant-option.selected .color-circle {
+  outline: 2px solid #bd8eaa;
+  outline-offset: 3px;
+}
+
+.color-name {
+  font-size: 12px;
+  color: #4b3545;
 }
 
 .add-button {
