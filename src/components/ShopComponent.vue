@@ -144,9 +144,19 @@ function addToCart(item) {
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 320px));
-  justify-content: center;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 25px;
+}
+@media (max-width: 1000px) {
+  .products-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .empty-collection {
