@@ -197,8 +197,9 @@ onMounted(async () => {
           </div>
 
         </div>
-
+        
       </section>
+    
 
     </section>
 
@@ -212,6 +213,7 @@ onMounted(async () => {
 
   </main>
 </template>
+
 <style scoped>
 
 .fan-page {
@@ -261,7 +263,6 @@ onMounted(async () => {
   letter-spacing: 4px;
   text-transform: uppercase;
   color: white;
-  opacity: 1;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
 }
 
@@ -400,7 +401,6 @@ onMounted(async () => {
 
 .about-content {
   width: 100%;
-  max-width: none;
 }
 
 .description {
@@ -438,7 +438,8 @@ onMounted(async () => {
   min-width: 0;
 }
 
-.x-section > .label {
+.x-section > .label,
+.videos-section > .label {
   display: block;
   margin-bottom: 15px;
 }
@@ -465,7 +466,6 @@ onMounted(async () => {
 }
 
 .videos-section > .label {
-  display: block;
   margin-bottom: 22px;
 }
 
@@ -498,21 +498,10 @@ onMounted(async () => {
 }
 
 .kali {
-  background:
-    linear-gradient(
-      180deg,
-      #fff7fa 0%,
-      #fbeaf0 48%,
-      #fff7fa 100%
-    );
-
-  color: #3b202b;
   padding: 45px;
+  color: #3b202b;
   border-radius: 30px;
-}
-
-.kali .artist-hero {
-  border-radius: 30px;
+  background: linear-gradient(180deg, #fff7fa 0%, #fbeaf0 48%, #fff7fa 100%);
 }
 
 .kali .artist-hero::before {
@@ -530,11 +519,6 @@ onMounted(async () => {
   font-family: Georgia, serif;
   font-style: italic;
   letter-spacing: -3px;
-  color: white;
-}
-
-.kali .artist-subtitle {
-  color: white;
 }
 
 .kali .artist-socials a {
@@ -558,26 +542,25 @@ onMounted(async () => {
 .kali .quote-card {
   background: #f7dce6;
   color: #7a2946;
-  border-left: none;
+  border: none;
   border-radius: 22px;
 }
 
 .kali .quote-mark {
   color: #7a2946;
-  opacity: 0.15;
 }
 
 .kali .about {
-  border-top: 1px solid #b66b86;
+  border-top-color: #b66b86;
 }
 
 .kali .detail-item {
-  border-top: 1px solid rgba(122, 41, 70, 0.25);
+  border-top-color: rgba(122, 41, 70, 0.25);
 }
 
 .kali .x-card {
   border-radius: 20px;
-  border: 1px solid rgba(122, 41, 70, 0.15);
+  border-color: rgba(122, 41, 70, 0.15);
 }
 
 .kali .video-item iframe {
@@ -589,15 +572,16 @@ onMounted(async () => {
 }
 
 .rocky {
-  background: #d9d7d0;
-  color: #101010;
   padding: 45px;
-  border: 4px solid #111;
+  color: #101010;
+  background: #d9d7d0;
+  border: none;
+  border-radius: 30px;
 }
 
 .rocky .artist-hero {
-  border-radius: 0;
-  border: 3px solid #111;
+  border: none;
+  border-radius: 30px;
 }
 
 .rocky .artist-hero::before {
@@ -614,13 +598,11 @@ onMounted(async () => {
 }
 
 .rocky .edition {
-  display: inline-block;
   width: fit-content;
   padding: 7px 11px;
   margin-bottom: 15px;
   background: #111;
-  color: #fff;
-  font-family: Arial, Helvetica, sans-serif;
+  color: white;
   font-size: 10px;
   font-weight: 900;
   letter-spacing: 4px;
@@ -628,21 +610,16 @@ onMounted(async () => {
 }
 
 .rocky .artist-subtitle {
-  font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
 .rocky .artist-socials a {
-  border-radius: 0;
-  border: 2px solid #111;
   background: white;
 }
 
 .rocky .artist-socials a:hover {
-  background: #111;
-  transform: rotate(-4deg) translateY(-4px);
+  background: #eee8e1;
 }
 
 .rocky .moodboard {
@@ -657,20 +634,15 @@ onMounted(async () => {
 
 .rocky .main-photo img,
 .rocky .small-photo img {
-  border-radius: 0;
+  border-radius: 20px;
 }
 
 .rocky .quote-card {
-  background: #111;
+  background: #252323;
   color: white;
   border: none;
-  border-radius: 0;
-  transform: rotate(1deg);
-}
-
-.rocky .quote-mark {
-  color: white;
-  opacity: 0.15;
+  border-radius: 22px;
+  transform: none;
 }
 
 .rocky .quote-text {
@@ -680,32 +652,21 @@ onMounted(async () => {
   text-transform: uppercase;
 }
 
-.rocky .quote-song {
-  color: white;
-}
-
 .rocky .about {
-  border-top: 5px solid #111;
+  border-top-color: #b5aea3;
 }
 
 .rocky .detail-item {
-  border-top: 3px solid #111;
-}
-
-.rocky .detail-item strong {
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 900;
+  border-top-color: rgba(0, 0, 0, 0.2);
 }
 
 .rocky .x-card {
   background: #f4f3ef;
-  border: 3px solid #111;
-  border-radius: 0;
+  border-radius: 20px;
 }
 
 .rocky .video-item iframe {
-  border-radius: 0;
-  border: 2px solid #111;
+  border-radius: 20px;
 }
 
 .rocky .video-title {
@@ -717,19 +678,21 @@ onMounted(async () => {
 }
 
 .kanye {
-  background: #eee9df;
-  color: #111;
   padding: 45px;
+  color: #111;
+  background: #eee9df;
+  border: none;
+  border-radius: 30px;
 }
 
 .kanye .artist-hero {
-  border-radius: 0;
-  border: 2px solid #111;
+  border: none;
+  border-radius: 30px;
 }
 
 .kanye .artist-hero::before {
-  backdrop-filter: blur(9px);
   background: rgba(20, 15, 10, 0.45);
+  backdrop-filter: blur(9px);
 }
 
 .kanye .artist-overlay {
@@ -737,30 +700,27 @@ onMounted(async () => {
 }
 
 .kanye .artist-overlay h1 {
+  max-width: 850px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 92px;
   font-weight: 900;
   line-height: 0.85;
   letter-spacing: -6px;
   text-transform: uppercase;
-  max-width: 850px;
 }
 
 .kanye .edition {
-  display: inline-block;
   width: fit-content;
-  margin-bottom: 18px;
   padding: 7px 10px;
+  margin-bottom: 18px;
   background: #e76f2e;
   color: #111;
-  font-family: Arial, Helvetica, sans-serif;
   font-weight: 900;
   letter-spacing: 2px;
   text-shadow: none;
 }
 
 .kanye .artist-subtitle {
-  font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -768,13 +728,10 @@ onMounted(async () => {
 
 .kanye .artist-socials a {
   background: #eee9df;
-  border: 2px solid #111;
-  border-radius: 0;
 }
 
 .kanye .artist-socials a:hover {
   background: #e76f2e;
-  transform: translateY(-4px);
 }
 
 .kanye .moodboard {
@@ -783,17 +740,9 @@ onMounted(async () => {
   gap: 10px;
 }
 
-.kanye .main-photo {
-  transform: none;
-}
-
 .kanye .main-photo img,
 .kanye .small-photo img {
-  border-radius: 0;
-}
-
-.kanye .main-photo img {
-  filter: contrast(1.05);
+  border-radius: 20px;
 }
 
 .kanye .photo-two {
@@ -808,7 +757,7 @@ onMounted(async () => {
   padding: 7px 9px;
   background: #e76f2e;
   color: #111;
-  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 8px;
   font-size: 11px;
   font-weight: 900;
   letter-spacing: 1px;
@@ -816,12 +765,12 @@ onMounted(async () => {
 
 .kanye .quote-card {
   position: relative;
+  overflow: hidden;
+  padding: 32px;
   background: #e76f2e;
   color: #111;
   border: none;
-  border-radius: 0;
-  padding: 32px;
-  overflow: hidden;
+  border-radius: 22px;
 }
 
 .kanye .quote-card::before {
@@ -829,7 +778,6 @@ onMounted(async () => {
   position: absolute;
   top: 10px;
   left: 10px;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
   font-weight: 900;
   letter-spacing: 1px;
@@ -854,13 +802,11 @@ onMounted(async () => {
   position: relative;
   z-index: 2;
   color: #111;
-  opacity: 0.65;
-  font-family: Arial, Helvetica, sans-serif;
   font-weight: 900;
 }
 
 .kanye .about {
-  border-top: 5px solid #111;
+  border-top: 3px solid #d9c7b2;
 }
 
 .kanye .about .label {
@@ -879,13 +825,12 @@ onMounted(async () => {
 }
 
 .kanye .detail-item {
-  border-top: 3px solid #111;
+  border-top-color: rgba(0, 0, 0, 0.2);
 }
 
 .kanye .detail-item strong {
-  font-family: Arial, Helvetica, sans-serif;
   font-weight: 900;
-  color: #e76f2e;
+  color: #c85d27;
 }
 
 .kanye .detail-item span {
@@ -894,13 +839,12 @@ onMounted(async () => {
 
 .kanye .x-card {
   background: #f6f2e9;
-  border: 2px solid #111;
-  border-radius: 0;
+  border-radius: 20px;
 }
 
 .kanye .videos-section {
-  border-top: 5px solid #111;
   padding-top: 30px;
+  border-top: 3px solid #d9c7b2;
 }
 
 .kanye .videos-section > .label {
@@ -912,12 +856,10 @@ onMounted(async () => {
 }
 
 .kanye .video-item iframe {
-  border-radius: 0;
-  border: 2px solid #111;
+  border-radius: 20px;
 }
 
 .kanye .video-title {
-  margin-top: 10px;
   color: #111;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 17px;
@@ -951,7 +893,6 @@ onMounted(async () => {
 }
 
 @media (max-width: 1000px) {
-
   .moodboard,
   .rocky .moodboard,
   .kanye .moodboard {
@@ -1024,7 +965,6 @@ onMounted(async () => {
 }
 
 @media (max-width: 650px) {
-
   .fan-page {
     padding: 30px 4%;
   }
@@ -1089,5 +1029,4 @@ onMounted(async () => {
     font-size: 25px;
   }
 }
-
 </style>

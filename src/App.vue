@@ -5,6 +5,7 @@ import FooterComponent from './components/FooterComponent.vue'
 import HeaderComponent from './components/HeaderComponent.vue'
 import MainComponent from './components/MainComponent.vue'
 import SurpriseTrack from './components/SurpriseTrack.vue'
+import EventsView from './views/EventsView.vue'
 import ShopView from './views/ShopView.vue'
 import CartComponent from './components/CartComponent.vue'
 
@@ -167,10 +168,8 @@ const artists =[
 ]
 
 </script>
-
 <template>
   <div class="app">
-
     <HeaderComponent
       :artists="artists"
       @abrir-carrito="carritoAbierto = true"
@@ -182,13 +181,10 @@ const artists =[
     />
 
     <MainComponent :artists="artists" />
-
     <SurpriseTrack />
-
+    <EventsView />
     <ShopView :artists="artists" />
-
     <FooterComponent />
-
   </div>
 </template>
 <style scoped>
