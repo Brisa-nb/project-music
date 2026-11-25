@@ -1,7 +1,16 @@
-
 <script setup lang="js">
 import { ref } from 'vue'
 import HelpChat from './HelpChat.vue'
+import { useCart } from '../composables/useCart'
+
+const emit = defineEmits(['abrir-carrito'])
+
+const { totalItems } = useCart()
+
+const abrirCarrito = () => {
+  menuAbierto.value = false
+  emit('abrir-carrito')
+}
 
 defineProps({
   artists: {
@@ -95,6 +104,9 @@ const abrirAyuda = () => {
 
         <button @click="irSeccion('eventos')">Eventos</button>
         <button @click="irSeccion('tienda')">Tienda</button>
+        <button class="cart-link" @click="abrirCarrito">
+         🛒 ({{ totalItems }})
+        </button>
         <button @click="abrirAyuda">Ayuda</button>
 
         <button class="registro" @click="irSeccion('registro')">
@@ -478,5 +490,19 @@ h1 span {
   object-fit: contain;
   display: block;
 }
+.nav-links .cart-link {
+  padding: 10px 15px;
+  border: 1px solid #d9b3c9;
+  border-radius: 20px;
+  color: #a64066;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.nav-links .cart-link:hover {
+  background: #ffd6e5;
+  color: #a64066;
+}
+
 
 </style>
