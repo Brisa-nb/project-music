@@ -1,7 +1,9 @@
+
 <script setup>
 import { ref, computed } from 'vue'
 import ProductCard from './ProductCard.vue'
 import ProductDetail from './ProductDetail.vue'
+import { useCart } from '../composables/useCart'
 
 const props = defineProps({
   products: {
@@ -16,6 +18,11 @@ const props = defineProps({
 
 const selectedArtist = ref(1)
 const selectedProduct = ref(null)
+
+const {
+  addToCart,
+  totalItems
+} = useCart()
 
 const artistProducts = computed(() => {
   return props.products.filter(product =>
@@ -36,9 +43,10 @@ function closeDetail() {
   selectedProduct.value = null
 }
 
-function addToCart(item) {
-  console.log('Producto seleccionado:', item)
-  alert(`${item.product.name} - ${item.variant.name} seleccionado`)
+function handleAddToCart(item) {
+  addToCart(item)
+
+  alert(`${item.product.name} se agregó al carrito ♡`)
 }
 </script>
 
@@ -66,7 +74,7 @@ function addToCart(item) {
       <ProductDetail
         :product="selectedProduct"
         @close="closeDetail"
-        @add-to-cart="addToCart"
+        @add-to-cart="handleAddToCart"
       />
     </div>
 
@@ -123,7 +131,7 @@ function addToCart(item) {
   justify-content: center;
   flex-wrap: wrap;
   gap: 12px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .artist-selector button {

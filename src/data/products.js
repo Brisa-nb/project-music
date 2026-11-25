@@ -11,7 +11,7 @@ export const products = [
     edition: '01',
     editionName: 'Kali Uchis Collection',
     limited: true,
-
+    
     description: 'Una pieza de colección con detalles botánicos, cerezas y acabados premium.',
     materials: 'Lona heavyweight, forro satinado y detalles en piel vegana.',
     capacity: 'Compartimento acolchado para laptop de hasta 13.5 pulgadas.',
@@ -20,6 +20,7 @@ export const products = [
       {
         id: 1,
         name: 'Ivory',
+        color: '#E8DCCB',
         image: '/images/bolsoIVORY.jpg',
         gallery: [
           '/images/bolsoIVORY2.jpg',
@@ -29,6 +30,7 @@ export const products = [
       {
         id: 2,
         name: 'Noir Cherry',
+         color: '#39232D',
         image: '/images/bolsoNOIR1.jpg',
         gallery: [
           '/images/bolsoNOIR2.jpg',
@@ -56,6 +58,7 @@ export const products = [
       {
         id: 1,
         name: 'Único',
+        color: '#e8a6b2',
         image: '/images/Collar1.jpg',
         gallery: [
           '/images/collar2.jpg',
@@ -85,6 +88,7 @@ export const products = [
     {
       id: 1,
       name: 'Orquídea Vino',
+      color: '#70243A',
       image: '/images/blusa1.jpg',
       gallery: [
         '/images/blusa2.jpg',
@@ -113,6 +117,7 @@ export const products = [
     {
       id: 1,
       name: 'Morado Orquídea',
+      color: '#8956A5',
       image: '/images/pinza1.jpg',
       gallery: [
         '/images/pinza2.jpg',
@@ -142,6 +147,7 @@ export const products = [
       {
         id: 1,
         name: 'Black / Camel',
+        color: '#302923',
         image: '/images/gorra1.jpg',
         gallery: [
           '/images/gorra2.jpg',
@@ -170,6 +176,7 @@ export const products = [
       {
         id: 1,
         name: 'Washed Black',
+        color: '#343238',
         image: '/images/chaqueta1.jpg',
         gallery: [
           '/images/chaqueta2.jpg',
@@ -200,6 +207,7 @@ export const products = [
       {
         id: 1,
         name: 'Punk Bling Star',
+        color: '#B52C3B',
         image: '/images/banda1.jpg',
         gallery: [
           '/images/banda2.jpg',
@@ -227,6 +235,7 @@ export const products = [
       {
         id: 1,
         name: 'Dark Denim',
+        color: '#263B50',
         image: '/images/bolsoAS1.jpg',
         gallery: [
           '/images/bolsoAS2.jpg',
@@ -256,6 +265,7 @@ export const products = [
       {
         id: 1,
         name: 'Smoke Silver',
+        color: '#A6A6A6',
         image: '/images/lentes1.jpg',
         gallery: [
           '/images/lentes2.jpg',
@@ -283,6 +293,7 @@ export const products = [
       {
         id: 1,
         name: 'Washed Black',
+        color: '#292929',
         image: '/images/hoddie1.jpg',
         gallery: [
           '/images/hoddie2.jpg'
@@ -310,6 +321,7 @@ export const products = [
       {
         id: 1,
         name: 'Total Black',
+        color: '#171717',
         image: '/images/pants1.jpg',
         gallery: [
           '/images/pants2.jpg',
@@ -337,6 +349,7 @@ export const products = [
       {
         id: 1,
         name: 'Total Black',
+        color: '#202020',
         image: '/images/mochila1.jpg',
         gallery: [
           '/images/mochila2.jpg',

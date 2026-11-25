@@ -1,9 +1,14 @@
-<script setup lang="js" set up>
-import FooterComponent from './components/FooterComponent.vue';
-import HeaderComponent from './components/HeaderComponent.vue';
-import MainComponent from './components/MainComponent.vue';
-import SurpriseTrack from './components/SurpriseTrack.vue';
-import ShopView from './views/ShopView.vue';
+<script setup>
+import { ref } from 'vue'
+
+import FooterComponent from './components/FooterComponent.vue'
+import HeaderComponent from './components/HeaderComponent.vue'
+import MainComponent from './components/MainComponent.vue'
+import SurpriseTrack from './components/SurpriseTrack.vue'
+import ShopView from './views/ShopView.vue'
+import CartComponent from './components/CartComponent.vue'
+
+const carritoAbierto = ref(false)
 
 const artists =[
   {
@@ -165,13 +170,26 @@ const artists =[
 
 <template>
   <div class="app">
-    <HeaderComponent :artists="artists"></HeaderComponent>
-   <MainComponent :artists="artists"></MainComponent> 
-   <SurpriseTrack></SurpriseTrack>
-   <ShopView :artists="artists" />
-    <FooterComponent></FooterComponent>
 
-</div>
+    <HeaderComponent
+      :artists="artists"
+      @abrir-carrito="carritoAbierto = true"
+    />
+
+    <CartComponent
+      v-if="carritoAbierto"
+      @cerrar="carritoAbierto = false"
+    />
+
+    <MainComponent :artists="artists" />
+
+    <SurpriseTrack />
+
+    <ShopView :artists="artists" />
+
+    <FooterComponent />
+
+  </div>
 </template>
 <style scoped>
 .app{
